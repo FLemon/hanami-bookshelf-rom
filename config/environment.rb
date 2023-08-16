@@ -3,6 +3,21 @@ require 'hanami/setup'
 require_relative '../lib/bookshelf'
 require_relative '../apps/web/application'
 
+class HttpRouter
+  class Request
+    def initialize(path, rack_request)
+      @rack_request = rack_request
+      @path = URI::DEFAULT_PARSER.unescape(path).split(/\//)
+      @path.shift if @path.first == ''
+      @path.push('') if path[-1] == ?/
+      @extra_env = {}
+      @params = []
+      @acceptable_methods = Set.new
+    end
+  end
+end
+
+
 Hanami.configure do
   mount Web::Application, at: '/'
 
