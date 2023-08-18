@@ -6,7 +6,7 @@ RUN apk add --no-cache build-base postgresql postgresql-dev libpq git
 
 RUN gem install bundler
 
-COPY Gemfile Gemfile.lock .
+COPY Gemfile .
 
 RUN bundle install
 
