@@ -6,6 +6,7 @@ gem 'hanami-utils', git: 'https://github.com/swilgosz/hanami-utils', branch: '1.
 gem 'hanami-ruby3', git: 'https://github.com/FLemon/hanami-ruby3', branch: 'ruby-3'
 gem 'hanami-validations', '2.0.0.alpha1'
 gem 'hanami-router', '~> 1.3.2'
+gem 'hanami-helpers', '~> 1.3.3'
 
 gem 'rom', '~> 5.2'
 gem 'rom-sql', '~> 3.5'
