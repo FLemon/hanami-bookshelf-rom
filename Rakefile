@@ -16,4 +16,12 @@ namespace :db do
   task setup: :environment do
     ROM::SQL::RakeSupport.env = Bookshelf::Persistence.configuration
   end
+
+  task create: :environment do
+    `createdb -h db -U postgres hanami_bookshelf_rom_development`
+  end
+
+  task drop: :environment do
+    `dropdb -h db -U postgres hanami_bookshelf_rom_development`
+  end
 end

@@ -1,20 +1,20 @@
+# frozen_string_literal: true
+
 module Web
   module Controllers
     module Books
-      class Destroy
+      class Show
         include Web::Action
+
+        expose :book
 
         params do
           required(:id).filled(:integer)
         end
 
         def call(params)
-          if params.valid?
-            Bookshelf::Repositories[:Book].delete(params[:id])
-            redirect_to(routes.books_path)
-          else
-            self.status = 422
-          end
+          @book = Bookshelf::Repositories[:Book].root.where(id: params[:id]).one
+          halt 422 unless @book
         end
       end
     end

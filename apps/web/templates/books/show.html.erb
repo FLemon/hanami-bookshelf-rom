@@ -1,0 +1,9 @@
+<h2><%= book.title %></h2>
+<p>By <%= book.author %></p>
+<%=
+  form_for :book, routes.book_path(book.id), method: :delete do
+    div class: 'controls' do
+      submit 'Destroy'
+    end
+  end
+%>

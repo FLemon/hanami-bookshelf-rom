@@ -6,16 +6,18 @@ services:
     command: hanami server --host=0.0.0.0
     ports:
       - 2300:2300
-    # volumes:
-    #   - ./:/app
+    volumes:
+      - .:/app
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgresql://postgres:example@db/hanami_ruby3_development
+      DATABASE_URL: postgresql://postgres:@db/hanami_bookshelf_rom_development
+    stdin_open: true
+    tty: true
 
   db:
     image: postgres:10.4-alpine
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD:

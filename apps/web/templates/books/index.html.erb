@@ -4,7 +4,7 @@
   <div id="books">
     <% books.each do |book| %>
       <div class="book">
-        <h2><%= book.title %></h2>
+        <h2><%= link_to book.title, routes.book_path(book.id) %></h2>
         <p><%= book.author %></p>
       </div>
     <% end %>
